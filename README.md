@@ -6,4 +6,4 @@
 ```
 ---
 ##### Głównymi autorami skryptu są: McKoxu oraz KGaZ
-###### Link do tematu z głównym skryptem: [!Url]https://skript.pl/temat/20303-skrypt-na-komendę-nick/
+###### Link do tematu z głównym skryptem: [KLIK](https://skript.pl/temat/20303-skrypt-na-komendę-nick/)
