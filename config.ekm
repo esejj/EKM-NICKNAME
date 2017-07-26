@@ -1,5 +1,6 @@
 // Konfiguracja do skryptu "EKM-NICKNAME"
 tag: '§8[§6» &3EKM&7-&9NICKNAME §6«§8]'
+permission: 'ekm.nickname.change'
 // Jesli wylaczone ustaw '0'
 // Jesli wlaczone ustaw '1'
 displayname-must-be-nickname: '0'
