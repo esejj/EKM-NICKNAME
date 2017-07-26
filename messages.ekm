@@ -1,0 +1,5 @@
+// Wiadomosci
+brakarg: '§8» &cUzyj§7: §3/nick §8<§cnowy wyglad nicku§8>'
+wrongnick: '§8» §cZawartosc argumentu nie jest twoim nickiem§7.'
+changenick: '§8» §6Twoj nick zostal zmieniony! §7Twoj nick od teraz to: §3{DISPLAYNAME}§7.'
+permission-message: '§8» §4You don't have permission §8(§c{PERM}§8)'
