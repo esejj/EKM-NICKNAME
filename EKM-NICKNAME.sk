@@ -1,0 +1,44 @@
+on load:
+	if folder "plugins/EKM-NICKNAME" doesn't exists:
+		create folder "plugins/EKM-NICKNAME"
+		create file "plugins/EKM-NICKNAME/config.ekm"
+		create file "plugins/EKM-NICKNAME/messages.ekm"
+		download from "https://raw.githubusercontent.com/esejj/EKM-NICKNAME/master/messages.ekm" to "plugins/EKM-NICKNAME/messages.ekm"
+		download from "https://raw.githubusercontent.com/esejj/EKM-NICKNAME/master/config.ekm" to "plugins/EKM-NICKNAME/config.ekm"
+		send "Zaladowano skrypt..." to console
+	set {tag} to colored single value "tag" get of "plugins/EKM-NICKNAME/config.ekm"
+	set {displayname-must-be-nickname} to single value "displayname-must-be-nickname" get of "plugins/EKM-NICKNAME/config.ekm"
+	set {bad-argument} to coloured single value "bad-argument" get of "plugins/EKM-NICKNAME/messages.ekm"
+	set {wrong-nickname} to coloured single value "wrong-nickname" get of "plugins/EKM-NICKNAME/messages.ekm"
+	set {change-nickname} to coloured single value "change-nickname" get of "plugins/EKM-NICKNAME/messages.ekm"
+	set {permission-messages} to coloured single value "permission-message" get of "plugins/EKM-NICKNAME/messages.ekm"
+	set {permission} to single value "permission" get of "plugins/EKM-NICKNAME/config.ekm"
+	
+command /ekm:nick [<text>]:
+	description: Zmiana koloru nicku.
+	aliases: /nick
+	executable by: player
+	trigger:
+		if player has permission "%{permission}%":
+			if argument is set:
+				if {displayname-must-be-nickname} => 1:
+					set {_checknickname} to uncoloured argument
+					if {_checknickname} is "%player%":
+						set display name of the player to "%coloured argument%"
+						set {fixnickname::%player%} to coloured argument
+						send "%{tag}% %{change-nickname}%"
+					else:
+						send "%{tag}% %{wrong-nickname}%"
+				else:
+					set display name of the player to "%coloured argument%"
+					set {fixnickname::%player%} to coloured argument
+					send "%{tag}% %{change-nickname}%"
+			else:
+				send "%{tag}% %{bad-argument}%" to the player
+		else:
+			send "%{tag}% %{permission-message}%" to the player
+			
+            
+on chat:
+	if display name of the player isn't "%{fixnickname::%player%}%":
+		set display name of the player to "%{fixnickname::%player%}%"
